@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practical Page</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+            margin: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 700px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .back-btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+
+      
+
+        <p>
+           <h2>Practica</h2>
+
+<h3>Aim:</h3>
+<p>
+To study the working of Ultrasonic sensors using Arduino.
+</p>
+
+<h3>Simulation Environment:</h3>
+<p>
+TinkerCAD (Free online simulator)
+</p>
+
+<h3>Components:</h3>
+<p>
+Arduino UNO<br>
+HC-SR04 Ultrasonic Sensor
+</p>
+
+<h3>Theory:</h3>
+<p>
+The HC-SR04 is an inexpensive and widely used ultrasonic distance sensor module. 
+It is commonly used in robotics, automation, and DIY electronics projects.
+</p>
+
+<p>
+The HC-SR04 sensor utilizes ultrasonic sound waves to determine the distance between the sensor and an object.
+</p>
+
+<ul>
+<li><strong>Ultrasonic Emission:</strong> The sensor emits a high-frequency sound wave (around 40 kHz) which is inaudible to humans.</li>
+
+<li><strong>Sound Wave Reflection:</strong> The emitted sound wave travels through air until it hits an object and bounces back toward the sensor.</li>
+
+<li><strong>Receiving the Echo:</strong> The sensor has a built-in receiver to detect the reflected sound wave (echo).</li>
+
+<li><strong>Calculating Distance:</strong> By measuring the time taken for the sound wave to travel to the object and return, the sensor calculates the distance using the speed of sound (approximately 343 m/s at room temperature).</li>
+
+<li><strong>Output:</strong> The calculated distance is provided as a digital pulse duration in microseconds, which can be converted into centimeters or inches.</li>
+
+<li>This distance measuring technique is non-contact and suitable for applications like obstacle detection, liquid level measurement, and robotics.</li>
+</ul>
+
+<h3>Conclusion:</h3>
+<p>
+The HC-SR04 ultrasonic sensor successfully measures distance using ultrasonic waves and can be easily interfaced with Arduino for various real-world applications.
+</p>
+
+        </p><hr>
+        <div>
+            <button onclick="copyText()"> Copy the code </button>
+            <div id="copyText">
+<pre><code>
+// Define the pins for the ultrasonic sensor
+const int trigPin = 9;   // Arduino digital pin for the trigger
+const int echoPin = 10;  // Arduino digital pin for the echo
+
+// Variables to store the duration and distance
+long duration;
+int distance;
+
+void setup() {
+
+  // Initialize serial communication for debugging
+  Serial.begin(9600);
+
+  // Define the trigger and echo pins
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+
+  // Trigger a pulse to the sensor
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+
+  digitalWrite(trigPin, LOW);
+
+  // Measure the duration of the pulse from the echo
+  duration = pulseIn(echoPin, HIGH);
+
+  // Calculate the distance (in cm)
+  distance = duration * 0.034 / 2; 
+  // Divide by 2 because sound travels to object and back
+
+  // Print the distance to the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // Add delay between measurements
+  delay(1000);  // 1 second
+}
+</code></pre></div> <hr>
+
+<script>
+function copyText() {
+    var text = document.getElementById("copyText").innerText;
+    navigator.clipboard.writeText(text);
+}
+</script>
+  <img src="par3.png">
+        </div>
+
+        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+    </div>
+
+</body>
+</html>
