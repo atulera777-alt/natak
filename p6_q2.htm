@@ -45,16 +45,32 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 5 - Question 1</h1>
+         <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-            Yaha apna practical ka answer ya explanation likh.
-            Jo bhi code ya theory hai yaha daal sakta hai.
-        </p>
+<br><br>
 
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
+
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
+
+  navigator.clipboard.writeText(text);
+
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
