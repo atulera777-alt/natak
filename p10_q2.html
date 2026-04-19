@@ -45,32 +45,32 @@
 <body>
 
     <div class="container">
-        <h1>Practical Slip 10 - Question 2</h1>
+         <h2>practical2</h2>
 
-        <img src="https://via.placeholder.com/700x300">
+<textarea id="codeBox" rows="10" cols="80">
+Apna code yaha daal bhai 😎
+</textarea>
 
-        <p>
-            <h3>Q2. Create a Wireless Network of Two or More PCs Using an Access Point</h3>
+<br><br>
 
-<p><strong>Aim:</strong><br>
-To create a wireless network using an Access Point in Cisco Packet Tracer.
-</p>
+<button id="copyBtn" onclick="copyCode()">📋 Copy Code</button>
 
-<p><strong>Procedure:</strong><br>
-1. Place an Access Point and two or more PCs in Packet Tracer.<br>
-2. Configure SSID in the Access Point.<br>
-3. (Optional) Set wireless security password.<br>
-4. Connect PCs to the wireless network.<br>
-5. Assign IP addresses (Static or DHCP).<br>
-6. Test connectivity using ping command.
-</p>
+<script>
+function copyCode() {
+  let text = document.getElementById("codeBox").value;
+  let btn = document.getElementById("copyBtn");
 
-<p><strong>Result:</strong><br>
-The wireless network was successfully created and connectivity was verified.
-</p>
-        </p>
+  navigator.clipboard.writeText(text);
 
-        <a href="index.html" class="back-btn">⬅ Back to Home</a>
+  btn.innerText = "✅ Copied!";
+  
+  setTimeout(() => {
+    btn.innerText = "📋 Copy Code";
+  }, 2000);
+}
+</script>
+     <br> <br>
+          <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </div>
 
 </body>
