@@ -44,76 +44,67 @@
 </head>
 <body>
 
-    <h2> a) Create a simple class with data members and member functions.</h2>
+    <h2> A) Declare and initialize variables of types NUMBER, VARCHAR2, and DATE, and display them</h2>
 
 <textarea id="code1" rows="10" cols="80">
-#include <iostream.h>
-#include <string.h>
-#include <conio.h>
+DECLARE
+    v_number NUMBER := 100;
+    v_text VARCHAR2(50) := 'Hello PL/SQL';
+    v_date DATE := SYSDATE;
 
-class student
-{
-    char name[20];
-    int age;
-
-public:
-    void setdata()
-    {
-        strcpy(name, "alice");
-        age = 20;
-    }
-
-    void displaydata()
-    {
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
-    }
-};
-
-void main()
-{
-    clrscr();
-    student s;
-    s.setdata();
-    s.displaydata();
-    getch();
-}     
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Number value: ' || v_number);
+    DBMS_OUTPUT.PUT_LINE('Text value: ' || v_text);
+    DBMS_OUTPUT.PUT_LINE('Date value: ' || TO_CHAR(v_date, 'DD-MON-YYYY'));
+END;
+/
 </textarea>
 <button onclick="copyCode('code1', this)">Copy</button>
 
 <br><br>
-<h2>b) Demonstrate the use of class instances to access data and invoke member functions.</h2>
+<h2>B) Arithmetic expressions and string concatenation using variable in PL/SQL and SQL</h2>
 <textarea id="code2" rows="10" cols="80">
-#include <iostream.h>
-#include <conio.h>
+DECLARE
+    a NUMBER := 10;
+    b NUMBER := 5;
+    sum_result NUMBER;
+    full_name VARCHAR2(50);
 
-class car
-{
-    int speed;
+BEGIN
+    -- Arithmetic operation
+    sum_result := a + b;
 
-public:
-    void setspeed()
-    {
-        speed = 60;
-    }
+    -- String concatenation
+    full_name := 'Santosh' || ' ' || 'Pable';
 
-    void showspeed()
-    {
-        cout << "Car speed: " << speed << " km/h" << endl;
-    }
-};
-
-void main()
-{
-    clrscr();
-
-    car c1;
-    c1.setspeed();
-    c1.showspeed();
-
-    getch();
+    DBMS_OUTPUT.PUT_LINE('Sum is: ' || sum_result);
+    DBMS_OUTPUT.PUT_LINE('Full Name: ' || full_name);
+END;
+/etch();
 }
 </textarea>
+<button onclick="copyCode('code2', this)">Copy</button>
+    <br><br>
+    <h2>C) Use program to handle and display errors when dividing by zero</h2>
+    <textarea id="code2" rows="10" cols="80">
+        DECLARE
+    a NUMBER := 10;
+    b NUMBER := 0;
+    result NUMBER;
+
+BEGIN
+    result := a / b; -- This will cause division by zero
+
+    DBMS_OUTPUT.PUT_LINE('Result: ' || result);
+
+EXCEPTION
+    WHEN ZERO_DIVIDE THEN
+        DBMS_OUTPUT.PUT_LINE('Error: Division by zero is not allowed.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Unexpected error occurred.');
+END;
+/
+    </textarea>
 <button onclick="copyCode('code2', this)">Copy</button>
 
 <script>
